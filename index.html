@@ -1,0 +1,77 @@
+
+<script>
+
+function computerPlay (){
+    x = Math.floor(3 * Math.random())
+    switch (x){
+        case 0:
+        return 'rock'
+        break;
+        case 1:
+        return 'paper'
+        break;
+        case 2:
+        return 'scissors'
+        break;
+        default:
+        return 'Something went wrong.'
+    }
+}
+
+function playRound (player, computer){
+    let outcome = '';
+    if (player == computer) {
+        outcome = "It's a tie, try again."
+    }
+    else if (player == 'rock' && computer == 'scissors'){
+        outcome = 'You win!'
+    }
+    else if (player == 'rock' && computer == 'paper'){
+        outcome = 'You lose!'
+    }
+    else if (player == 'scissors' && computer == 'rock'){
+        outcome = 'You lose!'
+    }
+    else if (player == 'scissors' && computer == 'paper'){
+        outcome = 'You win!'
+    }
+    else if (player == 'paper' && computer == 'scissors'){
+        outcome = 'You lose!'
+    }
+    else if (player == 'paper' && computer == 'rock'){
+        outcome = 'You win!'
+    }
+    console.log(outcome)
+    return outcome
+}
+
+function playerPlay(){
+    let answer
+    answer = prompt ("Rock, paper, or scissors?")
+    answer = answer.toLowerCase()
+    return answer
+}
+
+function game (){
+    let i = 5;
+    let winCount = 0
+    while (i >= 0) {
+        outcome = playRound(playerPlay(), computerPlay());
+        switch (outcome){
+            case "It's a tie!":
+                outcome = playRound(playerPlay(), computerPlay());
+                break;
+            case "You win!":
+               winCount +=1;
+               break;
+            default:
+            winCount +=0;
+        }
+        i -= 1;
+    }
+return winCount
+}
+
+console.log("You won " + game() + " times!")
+
+</script>
