@@ -50,13 +50,9 @@ let playerScore = 0;
 let computerScore = 0;
 let roundNumber = 1;
 
-// buttons is a node list. It looks and acts much like an array.
+
 const buttons = document.querySelectorAll('button');
-
-// we use the .forEach method to iterate through each button
 buttons.forEach((button) => {
-
-  // and for each one we add a 'click' listener
   button.addEventListener('click', (e) => {
     console.log(button.id);
     computerChoice = computerPlay();
@@ -64,7 +60,6 @@ buttons.forEach((button) => {
     displayOutcome (computerChoice, outcome)
   });
 });
-
 
 function displayOutcome (computerChoice, outcome){
     let string = 'Computer choses ' + computerChoice + '. ' + outcome
@@ -85,18 +80,24 @@ function displayOutcome (computerChoice, outcome){
     document.getElementById(2).innerHTML = playerScore;
     document.getElementById(3).innerHTML = roundNumber;
     document.getElementById(4).innerHTML = computerScore;
-    crownChampion(playerScore, computerScore);
+    
+    if (playerScore > 5 || computerScore > 5){
+        crownChampion(playerScore, computerScore);
+    }
+
 
     return playerScore, computerScore, roundNumber;
 }
 
 function crownChampion (playerScore, computerScore){
-    if (playerScore == 5){
-        document.getElementById(5).innerHTML = 'Game over -- you win!'
+    if (playerScore > 5){
+        document.getElementById(5).innerHTML = 'GAME OVER -- you win!'
     }
-    else if (computerScore == 5){
-            document.getElementById(5).innerHTML = 'Game over -- you lose!'
-        }
+    else if (computerScore > 5){
+            document.getElementById(5).innerHTML = 'GAME OVER -- you lose!'
+            }
+    
+    if(confirm('Play again?')){
+        window.location.reload();  
+    }
 }
-
-
