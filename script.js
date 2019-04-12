@@ -81,6 +81,7 @@ function displayOutcome (computerChoice, outcome){
     document.getElementById(3).innerHTML = roundNumber;
     document.getElementById(4).innerHTML = computerScore;
     
+<<<<<<< HEAD
     if (playerScore > 5){
         if(confirm('Game over, you win! Play again?')){
             window.location.reload();  
@@ -92,4 +93,25 @@ function displayOutcome (computerChoice, outcome){
         }
     }
     return playerScore, computerScore, roundNumber;
+=======
+    if (playerScore > 5 || computerScore > 5){
+        crownChampion(playerScore, computerScore);
+    }
+
+
+    return playerScore, computerScore, roundNumber;
+}
+
+function crownChampion (playerScore, computerScore){
+    if (playerScore > 5){
+        document.getElementById(5).innerHTML = 'GAME OVER -- you win!'
+    }
+    else if (computerScore > 5){
+            document.getElementById(5).innerHTML = 'GAME OVER -- you lose!'
+            }
+    
+    if(confirm('Play again?')){
+        window.location.reload();  
+    }
+>>>>>>> fde33126e2c2ac942867d155f64278c3dacbc44a
 }
