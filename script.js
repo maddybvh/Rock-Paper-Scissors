@@ -81,23 +81,15 @@ function displayOutcome (computerChoice, outcome){
     document.getElementById(3).innerHTML = roundNumber;
     document.getElementById(4).innerHTML = computerScore;
     
-    if (playerScore > 5 || computerScore > 5){
-        crownChampion(playerScore, computerScore);
-    }
-
-
-    return playerScore, computerScore, roundNumber;
-}
-
-function crownChampion (playerScore, computerScore){
     if (playerScore > 5){
-        document.getElementById(5).innerHTML = 'GAME OVER -- you win!'
+        if(confirm('Game over, you win! Play again?')){
+            window.location.reload();  
+        }
     }
     else if (computerScore > 5){
-            document.getElementById(5).innerHTML = 'GAME OVER -- you lose!'
-            }
-    
-    if(confirm('Play again?')){
-        window.location.reload();  
+        if(confirm('Game over, you lose :( Play again?')){
+            window.location.reload();  
+        }
     }
+    return playerScore, computerScore, roundNumber;
 }
